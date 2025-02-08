@@ -1,0 +1,175 @@
+@font-face{
+    font-family: theboldfont;
+    src: url('theboldfont.ttf');
+    font-weight: bold;
+}
+body {
+    background-color: black;
+    overflow: hidden;
+}
+
+#title {
+    text-align: center;
+    width: 20%;
+    text-shadow: 0px 0px 25px white;
+    font-family: "theboldfont";
+    color: white;
+}
+
+#main {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    grid-template-columns: 20% 80%;
+    background-color: #17212b;
+}
+
+#leftbar {
+    grid-column: 1 / 8;
+    grid-row: 1 / 16;
+    background-color: #17212b;
+    display: block;
+}
+
+.user {
+    padding-top: 0px;
+    padding-left: 15px;
+    padding-bottom: 0px;
+    width: 20%;
+    height: 75px;
+    transition: background-color 0.5s;
+    background-color: #17212b;
+}
+.user h1 {
+    font-size: 20px;
+    margin: 0px;
+    margin-top: 15px;
+    color: white;
+}
+.user p {
+    font-size: 20px;
+    margin: 0px;
+    color: white;
+}
+
+.user:hover {
+    background-color: #2b5278;
+    transition: background-color 0.1s;
+}
+
+.selected {
+    background-color: #2b60d3;
+}
+#chatlist {
+    display: grid;
+    grid-auto-rows: 75px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#chatbar {
+    grid-column: 2 / 8;
+    grid-row: 1;
+    background-color: #17212b;
+    display: block;
+    min-height: 60px;
+}
+#chatbar h1 {
+    color: white;
+    padding: 0px;
+    padding-top: 15px;
+    margin-bottom: 0px;
+    margin: 0px;
+}
+#chatbar p {
+    color: white;
+    margin: 0px;
+}
+#chatbox {
+    grid-column: 2 / 8;
+    grid-row: 2 / 16;
+    display: list;
+    overflow-y: auto;
+    overflow-x: none;
+    background-color: #0e1621;
+    padding-bottom: 50px;
+}
+
+.message {
+    margin-top: 15px;
+    margin-left: 15px;
+    width: 50%;
+    display: block;
+    background-color: #1e2228;
+    border-radius: 10px;
+    opacity: 0.75;
+}
+
+.message[owner] {
+    margin-top: 15px;
+    margin-left: 50%;
+    width: calc(50% - 15px);
+    display: block;
+    background-color: #1e2228;
+    border-radius: 10px;
+    opacity: 0.75;
+}
+
+.message h1 {
+    padding: 0px;
+    padding-left: 15px;
+    padding-top: 5px;
+    font-size: 20px;
+    color: white;
+    margin: 0px;
+}
+
+.message p {
+    padding-left: 15px;
+    padding-bottom: 5px;
+    margin: 0px;
+    color: white;
+}
+
+.inpgroup {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    left: 20%;
+    padding: 0px;
+    z-index: 5;
+}
+
+.inpgroup input[type=text] {
+    width: 60%;
+    height: 40px;
+    background-color: rgba(34,39,46,255);
+    border: 0px;
+    margin-right: 0px;
+    transition: background-color 0.1s;
+    color: white;
+}
+
+.inpgroup input[type=text]:focus {
+    background-color: rgba(68,78,92,255);
+    transition: background-color 0.5s;
+}
+
+.inpgroup input[type=button] {
+    width: 20%;
+    height: 40px;
+    margin-left: 0px;
+    background-color: rgba(34,39,46,255);
+    border: 0px;
+    user-select: none;
+    transition: background-color 1s;
+    color: white;
+}
+.inpgroup input[type=button]:hover {
+    background-color: rgba(43, 92, 195, 0.75);
+    transition: background-color 0s;
+}

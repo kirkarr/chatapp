@@ -1,0 +1,31 @@
+@font-face{
+    font-family: theboldfont;
+    src: url('theboldfont.ttf');
+    font-weight: bold;
+}
+body {
+    background-color: black;
+}
+.title {
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    font-family: theboldfont;
+}
+
+form {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    width: 100%;
+}
+
+form input[type=text] {
+    width: 60vh;
+    height: 100px;
+}
+
+form input[type=submit] {
+    width: 30vh;
+    height: 100px;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ChatApp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/chat.css') }}">
+</head>
+<body>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js" integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='scripts/chat.js') }}"></script>
+    <div id="main">
+        <div id = "leftbar">
+            <h1 id = "title">ChatAPP</h1>
+            <div id = "chatlist"></div>
+        </div>
+        <div id = "chatbar">
+            <h1 id = "chattitle">Chat not selected</h1>
+            <p id = "chatdescr"><--- Select it there</p>
+        </div>
+        <div id = "chatbox">
+            <div id = "messages"></div>
+            <div class = "inpgroup">
+                <input type = "text" placeholder = "Write a message..." id = "msginput" disabled>
+                <input type = "button" onclick = "sendMessage();" value = "SEND">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
