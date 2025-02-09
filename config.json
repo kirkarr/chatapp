@@ -1,0 +1,20 @@
+{
+    "title": "ChatApp",
+    "initialrooms": {
+        "main": {
+            "title": "Main room",
+            "description": "Hang out!",
+            "messages": []
+        },
+        "second": {
+            "title": "Second room",
+            "description": "If main was too small.",
+            "messages": []
+        },
+        "third": {
+            "title": "Test zone",
+            "description": "Scary things...",
+            "messages": []
+        }
+    }
+}

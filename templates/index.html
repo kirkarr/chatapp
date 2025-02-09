@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ChatApp</title>
+    <title>{{ title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
 </head>
 <body>
-    <h1 class="title">chatapp</h1>
+    <h1 class="title">{{ title }}</h1>
 
     <button class="button" onclick="window.location.href = '/login'">START</button>
     <footer>kirkarrr.ru<br>kirkarrr.online</footer>

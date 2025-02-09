@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ChatApp</title>
+    <title>{{ title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/chat.css') }}">
 </head>
 <body>
@@ -10,7 +10,7 @@
     <script src="{{ url_for('static', filename='scripts/chat.js') }}"></script>
     <div id="main">
         <div id = "leftbar">
-            <h1 id = "title">ChatAPP</h1>
+            <h1 id = "title">{{ title }}</h1>
             <div id = "chatlist"></div>
         </div>
         <div id = "chatbar">

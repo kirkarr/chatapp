@@ -21,11 +21,11 @@ form {
 }
 
 form input[type=text] {
-    width: 60vh;
+    width: 40%;
     height: 100px;
 }
 
 form input[type=submit] {
-    width: 30vh;
+    width: 40%;
     height: 100px;
 }

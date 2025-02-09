@@ -3,6 +3,7 @@ function sendMessage() {
     var input = document.querySelector("#msginput");
     if(openedchat != ""){
         socket.emit("send", {'text': input.value, 'chatid': openedchat});
+        input.value = "";
     };
 };
 var chats = [];
@@ -20,8 +21,7 @@ function addMessage(name, text) {
     div.appendChild(description);
     if(name == ownname){div.setAttribute("owner", "")};
     var msgs = document.querySelector("#messages");
-    msgs.appendChild(div);
-    msgs.scroll(0, div.offsetTop);
+    msgs.appendChild(div); 
 }
 function loadChat(id){
     socket.emit('getchat', {'chatid': id})
@@ -29,6 +29,10 @@ function loadChat(id){
 
 window.onload = function () {
     const chatlist = document.querySelector('#chatlist');
+    const msgs = document.querySelector("#messages");
+    const chatbox = document.querySelector("#messages");
+    const inp = document.querySelector("#msginput");
+    
     socket.on('connect', () => {
         console.log("connected");
         socket.emit('listchats');
@@ -47,9 +51,9 @@ window.onload = function () {
     socket.on('chat', (data) => {
         if(data['chat'] != 'notfound'){
             console.log(data)
-            document.querySelector("#msginput").disabled = false;
+            inp.disabled = false;
             openedchat = data.chatid;
-            document.querySelector("#messages").innerHTML = "";
+            msgs.innerHTML = "";
             chat = data.chat
             if(!chatids.includes(data.chatid)){chatids.push(data.chatid)};
             chats[data.chatid] = data.chat;
@@ -59,6 +63,7 @@ window.onload = function () {
             for(message of messages){
                 addMessage(message.name, message.text);
             };
+            chatbox.scrollTop += msgs.children.length * 500;
         }else{
             alert('notfound error');
         }

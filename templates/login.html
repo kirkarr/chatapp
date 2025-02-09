@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ChatApp Login</title>
+    <title>{{ title }} Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
 </head>
 <body>
@@ -11,7 +11,8 @@
     <form action="/login" method="post">
         <label for = "name">Your name:</label>
         <input type = "text" id = "name" name = "name" minlength="2" maxlength="10" placeholder="Name">
-        <input type = "submit">
+        <br>
+        <input type = "submit" value="Войти">
     </form>
 </body>
 </html>

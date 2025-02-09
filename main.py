@@ -11,33 +11,18 @@ def strip_html(html):
 app = Flask("app")
 app.secret_key = os.urandom(128)
 sio = SocketIO(app, async_mode = "eventlet")
-chats = {
-    "main": {
-        "title": "Main room",
-        "description": "Hang out!",
-        "messages": []
-    },
-    "second": {
-        "title": "Second room",
-        "description": "If main was too small.",
-        "messages": []
-    },
-    "third": {
-        "title": "Test zone",
-        "description": "Scary things...",
-        "messages": []
-    }
-}
+config = json.load(open("config.json", "r"))
+chats = config['initialrooms']
 users = []
 
 @app.route("/")
 async def main():
-    return render_template("index.html")
+    return render_template("index.html", title = config['title'])
 
 @app.route("/login", methods = ["GET", "POST"])
 async def login():
     if request.method == "GET":
-        return render_template("login.html")
+        return render_template("login.html", title = config['title'])
     else:
         name = request.form.get("name")
         if name != None:
@@ -49,7 +34,7 @@ async def login():
 @app.route("/chat")
 async def chat():
     if session.get('name') != None:
-        return render_template("chat.html")
+        return render_template("chat.html", title = config['title'])
     else:
         return redirect("/login")
 @sio.on("connect")
