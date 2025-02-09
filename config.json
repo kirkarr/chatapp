@@ -3,17 +3,17 @@
     "initialrooms": {
         "main": {
             "title": "Main room",
-            "description": "Hang out!",
+            "description": "ChatApp Main Room.",
             "messages": []
         },
         "second": {
             "title": "Second room",
-            "description": "If main was too small.",
+            "description": "In case the main one was too small.",
             "messages": []
         },
         "third": {
-            "title": "Test zone",
-            "description": "Scary things...",
+            "title": "Fourth room",
+            "description": "If the first two seemed too boring.",
             "messages": []
         }
     }

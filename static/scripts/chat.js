@@ -10,6 +10,7 @@ var chats = [];
 var chatids = [];
 var openedchat = '';
 var ownname = '';
+var first = true;
 function addMessage(name, text) {
     var div = document.createElement("div");
     div.setAttribute('class', 'message');
@@ -80,6 +81,10 @@ window.onload = function () {
         chatlist.innerHTML = '';
         chats = data.chats;
         chatids = data.chatids;
+		if(first){
+			first = false;
+			loadChat(chatids[0]);
+		}
         console.log(chats);
         for(chatid of chatids){
             chat = chats[chatid];
