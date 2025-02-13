@@ -10,10 +10,11 @@ def strip_html(html):
 
 app = Flask("app")
 app.secret_key = os.urandom(128)
-sio = SocketIO(app, async_mode = "eventlet")
+sio = SocketIO(app, async_mode = "eventlet", cors_allowed_origins="*")
 config = json.load(open("config.json", "r"))
 chats = config['initialrooms']
-users = []
+users = {}
+phones = ["android", "iphone"]
 
 @app.route("/")
 async def main():
@@ -34,17 +35,28 @@ async def login():
 @app.route("/chat")
 async def chat():
     if session.get('name') != None:
+        useragent = request.headers.get("User-Agent").lower()
+        #Temporary disabled
+        #if any(x in useragent for x in phones):
+        #    return render_template("mobilechat.html", title = config['title'])
+        #else:
         return render_template("chat.html", title = config['title'])
     else:
         return redirect("/login")
 @sio.on("connect")
-def connect():
+def connect(sid):
     if session.get('name') != None:
-        print("Someone was connected")
-        users.append(session['name'])
+        users[session['name']] = request.sid
+        emit("connected", {'name': session['name']}, broadcast = True)
         emit("yourdata", {'name': session['name']})
     else:
         emit("error", {"text": "AUTHERROR"})
+
+@sio.on("disconnect")
+def disconnect():
+    if session.get('name') != None:
+        users.pop(session['name'])
+        emit("disconnected", {'name': session['name']}, broadcast = True)
 
 @sio.on("send")
 def send(data):
